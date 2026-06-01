@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CineList</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand-block">
+          <button class="brand" data-view="catalog" type="button">CineList</button>
+          <span class="brand-dot"></span>
+        </div>
+        <nav class="main-nav" aria-label="Primary">
+          <button class="nav-button active" data-view="catalog" type="button">Catalog</button>
+          <button class="nav-button" data-view="library" type="button">My List</button>
+        </nav>
+        <div id="authArea" class="auth-area"></div>
+      </header>
+
+      <main class="shell">
+        <section class="control-band" aria-label="Movie controls">
+          <div>
+            <p class="eyebrow" id="viewLabel">Movie catalog</p>
+            <h1 id="pageTitle">Browse movies</h1>
+          </div>
+          <div class="searchbar">
+            <input id="searchInput" type="search" placeholder="Search title, director, cast" autocomplete="off">
+            <select id="genreSelect" aria-label="Genre">
+              <option value="">All genres</option>
+            </select>
+            <select id="sortSelect" aria-label="Sort">
+              <option value="popular">Most popular</option>
+              <option value="rating">Highest rated</option>
+              <option value="year">Newest</option>
+              <option value="title">A to Z</option>
+            </select>
+          </div>
+        </section>
+
+        <div class="workspace">
+          <aside class="side-panel">
+            <section class="profile-panel" aria-label="Profile stats">
+              <div class="panel-header">
+                <span class="panel-kicker">Profile</span>
+                <span id="profileName" class="panel-name">Guest</span>
+              </div>
+              <div id="statsGrid" class="stats-grid"></div>
+            </section>
+            <section class="status-panel" aria-label="List filters">
+              <div class="panel-header">
+                <span class="panel-kicker">List</span>
+                <span class="panel-name">Status</span>
+              </div>
+              <div id="statusFilters" class="status-list"></div>
+            </section>
+            <section class="genre-panel" aria-label="Genres">
+              <div class="panel-header">
+                <span class="panel-kicker">Catalog</span>
+                <span class="panel-name">Genres</span>
+              </div>
+              <div id="genreChips" class="genre-chips"></div>
+            </section>
+          </aside>
+
+          <section class="content-panel" aria-live="polite">
+            <div class="content-head">
+              <div>
+                <p class="section-kicker" id="resultKicker">Top picks</p>
+                <h2 id="resultTitle">Movies</h2>
+              </div>
+              <div id="resultCount" class="result-count"></div>
+            </div>
+            <div id="message" class="message hidden"></div>
+            <div id="moviesGrid" class="movie-grid"></div>
+          </section>
+        </div>
+      </main>
+
+      <div id="movieModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-scrim" data-close-modal></div>
+        <article class="modal-card">
+          <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">&times;</button>
+          <div id="modalBody"></div>
+        </article>
+      </div>
+
+      <div id="authModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <div class="modal-scrim" data-close-auth></div>
+        <article class="auth-card">
+          <button class="icon-button modal-close" data-close-auth type="button" aria-label="Close">&times;</button>
+          <h2 id="authTitle">Log in</h2>
+          <form id="authForm" class="auth-form">
+            <div id="registerFields" class="register-fields hidden">
+              <label>
+                Display name
+                <input name="display_name" autocomplete="name">
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autocomplete="email">
+              </label>
+              <label>
+                Username
+                <input name="username" autocomplete="username">
+              </label>
+            </div>
+            <div id="loginFields">
+              <label>
+                Username or email
+                <input name="login" autocomplete="username">
+              </label>
+            </div>
+            <label>
+              Password
+              <input name="password" type="password" autocomplete="current-password">
+            </label>
+            <p id="authError" class="form-error hidden"></p>
+            <button id="authSubmit" class="primary-button" type="submit">Log in</button>
+          </form>
+          <button id="toggleAuthMode" class="text-button" type="button">Create an account</button>
+        </article>
+      </div>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
+

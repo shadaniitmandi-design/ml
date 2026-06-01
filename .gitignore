@@ -12,6 +12,8 @@ __pycache__/
 backend/kp_dev_cell.db
 backend/app/uploads/*
 !backend/app/uploads/.gitkeep
+movie-list/backend/*.db
+movie-list/backend/data/
 /main
 /main.cpp
 /app.js
